@@ -11,24 +11,23 @@ $comenzar.onclick = function () {
 
 
     const backArray = []
-    crearCuadrosArray();
-    function crearCuadrosArray() {
+    crearBackArray();
+    function crearBackArray() {
         for (let i = 0; i < $back.length; i++) {
             backArray.push(i)
         }
     }
 
     const frontArray = []
-    crearImagenesArray();
-    function crearImagenesArray() {
+    crearFrontArray();
+    function crearFrontArray() {
         for (let i = 0; i < $back.length / 2; i++) {
             frontArray.push(i)
         }
 
     }
-
-
     asignarImagenes();
+
     function asignarImagenes() {
         frontArray.forEach(function (elemento) {
             randomNum = Math.floor(Math.random() * backArray.length)
@@ -63,12 +62,14 @@ function manejarInputUsuario(e) {
                 secuenciaInput[0].className = "invisible"
                 secuenciaInput[1].className = "invisible"
                 secuenciaInput = []
-            }, 1200)
+            }, 1200);
             turnosJugados++
             cartasRestantes -= 2
 
             if (cartasRestantes === 0) {
-                document.querySelector("strong").textContent = `Encontraste todos los gatitos en ${turnosJugados} turnos!`
+                setTimeout(function () {
+                    document.querySelector("strong").textContent = `Encontraste todos los gatitos en ${turnosJugados} turnos!`
+                }, 1500);
             } else {
                 actualizarNumeroRondas(turnosJugados)
             }

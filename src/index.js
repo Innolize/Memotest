@@ -40,11 +40,7 @@ $comenzar.onclick = function () {
         })
     }
     habilitarInput();
-    function habilitarInput() {
-        $tablero.querySelectorAll(".card").forEach(function ($card) {
-            $card.onclick = manejarInputUsuario
-        });
-    }
+
 }
 
 let secuenciaInput = []
@@ -57,11 +53,13 @@ function manejarInputUsuario(e) {
     secuenciaInput.push($card)
 
     if (secuenciaInput.length === 2) {
+        bloquearInputUsuario()
         if (secuenciaInput[0].querySelector(".front img").src === secuenciaInput[1].querySelector(".front img").src) {
             setTimeout(function () {
                 secuenciaInput[0].className = "invisible"
                 secuenciaInput[1].className = "invisible"
                 secuenciaInput = []
+                habilitarInput();
             }, 1200);
             turnosJugados++
             cartasRestantes -= 2
@@ -80,6 +78,7 @@ function manejarInputUsuario(e) {
                 girarCartaOcultar(secuenciaInput[1])
                 HabilitarPrimerInput(secuenciaInput)
                 secuenciaInput = []
+                habilitarInput();
             }, 1200);
             turnosJugados++
             actualizarNumeroRondas(turnosJugados)
@@ -107,4 +106,16 @@ function HabilitarPrimerInput(secuenciaInput) {
 
 function actualizarNumeroRondas(turnosJugados) {
     $rondas.innerText = `Ronda # ${turnosJugados}`
+}
+
+function bloquearInputUsuario() {
+    $tablero.querySelectorAll(".card").forEach(function ($card) {
+        $card.onclick = function () { }
+    });
+}
+
+function habilitarInput() {
+    $tablero.querySelectorAll(".card").forEach(function ($card) {
+        $card.onclick = manejarInputUsuario
+    });
 }

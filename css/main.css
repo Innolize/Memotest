@@ -1,0 +1,36 @@
+body {
+    background-color: #333333;
+}
+
+img{
+    height: 120px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+.card{
+  position: relative;
+  height: 120px;
+  width: 150px;
+  transform-style: preserve-3d;
+  transition: all 0.8s ease;
+}
+
+ 
+
+.front{
+  position: absolute;
+  transform: rotateY(180deg);  
+  backface-visibility: hidden;
+    
+}
+
+.back{
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+strong{
+  text-align: center;
+  font-size: 300%
+}

@@ -6,9 +6,13 @@ const $card = document.querySelectorAll(".card")
 const $back = document.querySelectorAll(".back")
 const $front = document.querySelectorAll(".front img")
 
+let secuenciaInput = []
+let turnosJugados
+let cartasRestantes = 16
 
 $comenzar.onclick = function () {
-
+    turnosJugados = 1
+    actualizarNumeroRondas(turnosJugados)
 
     const backArray = []
     crearBackArray();
@@ -43,9 +47,7 @@ $comenzar.onclick = function () {
 
 }
 
-let secuenciaInput = []
-let turnosJugados = 0
-let cartasRestantes = 16
+
 
 function manejarInputUsuario(e) {
     const $card = e.currentTarget;
@@ -61,7 +63,6 @@ function manejarInputUsuario(e) {
                 secuenciaInput = []
                 habilitarInput();
             }, 1200);
-            turnosJugados++
             cartasRestantes -= 2
 
             if (cartasRestantes === 0) {
@@ -76,15 +77,15 @@ function manejarInputUsuario(e) {
             setTimeout(function () {
                 girarCartaOcultar(secuenciaInput[0])
                 girarCartaOcultar(secuenciaInput[1])
-                HabilitarPrimerInput(secuenciaInput)
-                secuenciaInput = []
                 habilitarInput();
+                secuenciaInput = []
+
             }, 1200);
-            turnosJugados++
             actualizarNumeroRondas(turnosJugados)
 
         }
     } else {
+        turnosJugados++
         deshabilitarPrimerInput($card);
     }
 }

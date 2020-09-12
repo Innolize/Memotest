@@ -35,11 +35,11 @@ $comenzar.onclick = function () {
     function asignarImagenes() {
         frontArray.forEach(function (elemento) {
             randomNum = Math.floor(Math.random() * backArray.length)
-            $front[backArray[randomNum]].src = `../img/gatito${elemento}.jpg`
+            $front[backArray[randomNum]].src = `img/gatito${elemento}.jpg`
             backArray.splice(randomNum, 1)
 
             randomNum2 = Math.floor(Math.random() * backArray.length)
-            $front[backArray[randomNum2]].src = `../img/gatito${elemento}.jpg`
+            $front[backArray[randomNum2]].src = `img/gatito${elemento}.jpg`
             backArray.splice(randomNum2, 1)
         })
     }

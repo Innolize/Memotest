@@ -45,6 +45,7 @@ $comenzar.onclick = function () {
     }
     habilitarInput();
 
+    
 }
 
 
